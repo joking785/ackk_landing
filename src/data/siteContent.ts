@@ -5,7 +5,7 @@ export const navLinks = [
   { href: '#about', label: 'О нас' },
   { href: '#news', label: 'Услуги' },
   { href: '#members', label: 'Члены Ассоциации' },
-  { href: '#projects', label: 'Решения' },
+  { href: '#solutions', label: 'Решения' },
   { href: '#contacts', label: 'Контакты' },
 ] as const
 

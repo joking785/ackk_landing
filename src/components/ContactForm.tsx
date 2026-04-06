@@ -134,10 +134,9 @@ export function ContactForm() {
 
               <label className="flex flex-col gap-2">
                 <span className={labelClass}>Комментарий</span>
-                <textarea
+                <input
                   name="message"
-                  rows={3}
-                  className={`min-h-[48px] resize-y ${inputClass}`}
+                  className={`min-h-[48px] ${inputClass}`}
                   placeholder="Кратко опишите задачу или вопрос"
                 />
               </label>
