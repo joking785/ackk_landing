@@ -133,25 +133,10 @@ body {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Панель формы контактов (Figma Frame 7584): PNG + градиент */
+/* Панель формы контактов: градиент поверх; декор — как в Hero (компонент) */
 .contact-form-panel {
   position: relative;
   isolation: isolate;
-}
-
-.contact-form-panel::before {
-  content: '';
-  position: absolute;
-  inset: -35%;
-  border-radius: inherit;
-  background-image: url('/contact-form-bg.png');
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-size: min(110%, 1400px);
-  transform: rotate(-105deg);
-  transform-origin: 25% 80%;
-  pointer-events: none;
-  z-index: 0;
 }
 
 .contact-form-panel::after {
@@ -168,9 +153,18 @@ body {
   z-index: 1;
 }
 
-.contact-form-panel > * {
+/* Контент и декор выше градиента ::after (z-1); форма кликабельна поверх декора */
+.contact-form-panel__content {
   position: relative;
+  z-index: 3;
+}
+
+.contact-form-panel__decor {
+  position: absolute;
+  left: -20px;
+  bottom: -96px;
   z-index: 2;
+  pointer-events: none;
 }
 
 /* Hero (Frame 8): градиент, блики, декор */

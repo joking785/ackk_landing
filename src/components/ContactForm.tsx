@@ -1,15 +1,17 @@
 import { useState, type FormEvent } from 'react'
+import graphicPng from '../assets/hero/Graphic.png'
+import groupSvgUrl from '../assets/hero/Group.svg?url'
 
 const INTEREST_CATEGORIES = [
-  'Разработка ПО',
+  'Программное обеспечение',
   'Информационная безопасность',
-  'Облачные решения',
-  'Корпоративная аналитика',
-  'CRM и продажи',
-  'Документооборот',
-  'HR и обучение',
-  'Геоаналитика',
-  'Другое',
+  'Автоматизация бизнеса',
+  'Телекоммуникации и связь',
+  '«Умный город», «Умный ЖК», ТИМ',
+  'Маркетинг',
+  'Радиоэлектроника',
+  'Электротранспорт и зар. инфраструктура',
+  'Юридическая и гос.поддержка',
 ] as const
 
 export function ContactForm() {
@@ -39,23 +41,53 @@ export function ContactForm() {
       className="border-t border-white/5 bg-[#0a0a0a] px-4 py-16 md:px-8 md:py-24"
     >
       <div className="mx-auto max-w-[1792px]">
-        <div className="contact-form-panel overflow-hidden rounded-[64px] px-6 py-12 md:px-12 md:py-16 lg:px-16 lg:pb-20 lg:pl-16 lg:pr-12 lg:pt-24 xl:pr-24">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_min(100%,800px)] lg:items-start lg:gap-12 xl:gap-16">
-            {/* Frame 7: заголовки, gap 48px */}
-            <div className="flex max-w-[816px] flex-col gap-12">
-              <h2 className="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[48px] md:leading-[59px]">
-                Остались вопросы?
-              </h2>
-              <p className="text-balance text-lg font-medium leading-7 text-white sm:text-2xl sm:leading-[29px]">
-                Оставьте заявку, и мы свяжемся с вами
-              </p>
-            </div>
+        <div className="contact-form-panel overflow-hidden rounded-[64px]">
+          <div
+            className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-[inherit]"
+            aria-hidden
+          >
+            <div className="hero-blur-tr" />
+            <div className="hero-blur-bl" />
+          </div>
 
-            {/* Frame 1321318324: форма, max 800px, gap 32px */}
-            <form
-              onSubmit={handleSubmit}
-              className="flex w-full max-w-[800px] flex-col gap-8 lg:justify-self-end"
-            >
+          {/* Прижато к левому нижнему краю панели (макет ~1131×812), зеркально как в Hero */}
+          <div
+            className="contact-form-panel__decor w-[min(100%,1131px)] [aspect-ratio:1131.1/812.17]"
+            aria-hidden
+          >
+            <div className="absolute inset-0 flex items-end justify-start">
+              <div className="-scale-x-100 h-full w-full">
+                <div className="grid h-full w-max max-w-full grid-cols-1 grid-rows-1 place-items-end">
+                  <img
+                    src={groupSvgUrl}
+                    alt=""
+                    className="col-start-1 row-start-1 z-0 max-h-full w-auto object-contain object-right select-none"
+                  />
+                  <img
+                    src={graphicPng}
+                    alt=""
+                    className="col-start-1 row-start-1 z-10 max-h-full w-auto object-contain object-right select-none"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="contact-form-panel__content px-6 py-12 md:px-12 md:py-16 lg:px-16 lg:pb-20 lg:pl-16 lg:pr-12 lg:pt-24 xl:pr-24">
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_min(100%,800px)] lg:items-start lg:gap-12 xl:gap-16">
+              <div className="flex max-w-[816px] flex-col gap-12">
+                <h2 className="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[48px] md:leading-[59px]">
+                  Остались вопросы?
+                </h2>
+                <p className="text-balance text-lg font-medium leading-7 text-white sm:text-2xl sm:leading-[29px]">
+                  Оставьте заявку, и мы свяжемся с вами
+                </p>
+              </div>
+
+              <form
+                onSubmit={handleSubmit}
+                className="flex w-full max-w-[800px] flex-col gap-8 lg:justify-self-end"
+              >
               <div className="grid gap-8 sm:grid-cols-2">
                 <label className="flex flex-col gap-2">
                   <span className={labelClass}>Имя *</span>
@@ -108,7 +140,7 @@ export function ContactForm() {
                   Категория интересующего направления *
                 </span>
                 <div
-                  className="flex max-h-[220px] flex-wrap content-start gap-3 overflow-x-auto overflow-y-auto [scrollbar-width:thin]"
+                  className="flex max-h-[260px] flex-wrap content-start gap-3 overflow-x-auto overflow-y-auto [scrollbar-width:thin]"
                   role="group"
                   aria-label="Направления"
                 >
@@ -185,6 +217,7 @@ export function ContactForm() {
                 
               </div>
             </form>
+            </div>
           </div>
         </div>
       </div>
