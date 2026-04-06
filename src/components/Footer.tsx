@@ -1,65 +1,58 @@
-import { Mail, MapPin, Phone } from 'lucide-react'
+import Logo from './icons/Logo'
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black px-4 py-12 md:px-8">
-      <div className="mx-auto grid max-w-[1400px] gap-10 md:grid-cols-3">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#e51924] text-sm font-bold text-white">
-              АЦ
-            </span>
-            <span className="font-bold text-white">АЦРКК</span>
+    <footer className="bg-[#333334]">
+      <div className="mx-auto flex max-w-[1920px] flex-col items-start gap-[120px] px-8 py-20 md:px-16">
+        {/* Верх: колонки space-between */}
+        <div className="flex w-full flex-col justify-between gap-12 lg:flex-row lg:items-start lg:gap-16 xl:gap-24">
+          {/* Слева: название (437px в макете) */}
+          <div className="flex flex-col max-w-[437px] gap-[40px] text-[40px] font-semibold leading-[140%] text-white">
+                <a href="mailto:info@ackk.ru" className="hover:underline">
+                  info@ackk.ru
+                </a>
+                <a href="tel:+78612000000" className="hover:underline">
+                  +7 (928) 207-58-25
+                </a>         
           </div>
-          <p className="mt-4 max-w-xs text-sm text-[#a1a1a1]">
-            Ассоциация цифрового развития Краснодарского края
-          </p>
-          <div className="mt-6 flex gap-3">
-            {['tg', 'vk', 'yt'].map((s) => (
-              <a
-                key={s}
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-xs font-semibold uppercase text-white/70 transition hover:border-white/30 hover:text-white"
-              >
-                {s}
-              </a>
-            ))}
+
+          {/* Справа: адрес, график, контакты (880px) */}
+          <div className="flex w-full max-w-[880px] flex-col gap-12">
+            <div className="flex flex-col gap-4">
+              <p className="text-xl font-normal leading-[140%] text-white">
+                Адрес
+              </p>
+              <p className="text-xl font-semibold leading-[140%] text-white">
+                ул. Северная, д. 405, Краснодар, Краснодарский край, Россия,
+                350002
+              </p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="text-xl font-normal leading-[140%] text-white">
+                График работы
+              </p>
+              <p className="text-xl font-semibold leading-[140%] text-white">
+                Ежедневно 08:00 – 20:00
+              </p>
+            </div>
+            
           </div>
         </div>
-        <div>
-          <h3 className="text-sm font-semibold text-white">Адрес</h3>
-          <div className="mt-4 flex gap-3 text-sm text-[#a1a1a1]">
-            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#e51924]" />
-            <span>
-              г. Краснодар, ул. Примерная, д. 1
-              <br />
-              Бизнес-центр «Цифра», офис 404
-            </span>
+
+        {/* Низ: логотип + юридические ссылки (Frame 1321317849) */}
+        <div className="flex w-full flex-col justify-between gap-12 lg:flex-row lg:items-start lg:gap-16 xl:gap-24">
+          <div className="flex h-[72px] items-center [&_svg]:h-[72px] [&_svg]:w-auto">
+            <Logo />
+          </div>
+          <div className="flex w-full max-w-[880px] flex-col gap-12">
+            <a
+              href="#"
+              className="text-base font-semibold leading-[140%] text-white underline-offset-2 hover:underline"
+            >
+              Политика конфиденциальности
+            </a>
           </div>
         </div>
-        <div>
-          <h3 className="text-sm font-semibold text-white">Контакты</h3>
-          <ul className="mt-4 space-y-3 text-sm text-[#a1a1a1]">
-            <li className="flex items-center gap-3">
-              <Mail className="h-4 w-4 shrink-0 text-[#e51924]" />
-              <a href="mailto:info@ackk.ru" className="hover:text-white">
-                info@ackk.ru
-              </a>
-            </li>
-            <li className="flex items-center gap-3">
-              <Phone className="h-4 w-4 shrink-0 text-[#e51924]" />
-              <a href="tel:+78612000000" className="hover:text-white">
-                +7 (861) 200-00-00
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className="mx-auto mt-12 flex max-w-[1400px] flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row">
-        <span>© {new Date().getFullYear()} АЦРКК. Все права защищены.</span>
-        <a href="#" className="hover:text-white/70">
-          Политика конфиденциальности
-        </a>
       </div>
     </footer>
   )

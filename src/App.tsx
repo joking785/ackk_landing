@@ -1,12 +1,10 @@
 import { ContactForm } from './components/ContactForm'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
-import { InfoCards } from './components/InfoCards'
+import { Services } from './components/Services'
 import { MembersSection } from './components/MembersSection'
 import { Navbar } from './components/Navbar'
-import { NewsPlaceholder } from './components/NewsPlaceholder'
-import { PartnersStrip } from './components/PartnersStrip'
-import { ProjectsSection } from './components/ProjectsSection'
+import { Industries } from './components/Industries'
 import { SolutionsSection } from './components/SolutionsSection'
 
 function App() {
@@ -15,10 +13,8 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <PartnersStrip />
-        <InfoCards />
-        <ProjectsSection />
-        <NewsPlaceholder />
+        <Services />
+        <Industries />
         <MembersSection />
         <SolutionsSection />
         <ContactForm />

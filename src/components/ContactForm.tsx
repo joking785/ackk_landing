@@ -1,107 +1,192 @@
 import { useState, type FormEvent } from 'react'
-import { KrasnodarMapGraphic } from './KrasnodarMapGraphic'
+
+const INTEREST_CATEGORIES = [
+  'Разработка ПО',
+  'Информационная безопасность',
+  'Облачные решения',
+  'Корпоративная аналитика',
+  'CRM и продажи',
+  'Документооборот',
+  'HR и обучение',
+  'Геоаналитика',
+  'Другое',
+] as const
 
 export function ContactForm() {
-  const [agreed, setAgreed] = useState(false)
+  const [categories, setCategories] = useState<string[]>([])
+
+  function toggleCategory(label: string) {
+    setCategories((prev) =>
+      prev.includes(label)
+        ? prev.filter((x) => x !== label)
+        : [...prev, label],
+    )
+  }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (!agreed) return
   }
+
+  const inputClass =
+    'h-12 w-full rounded-lg border border-[#333334] bg-[#3E3E3E] px-5 py-3 text-base font-normal text-white outline-none placeholder:text-white/60 focus:ring-2 focus:ring-[#E73446]/35'
+
+  const labelClass =
+    'text-base font-normal leading-6 text-white'
 
   return (
     <section
       id="contacts"
       className="border-t border-white/5 bg-[#0a0a0a] px-4 py-16 md:px-8 md:py-24"
     >
-      <div className="mx-auto max-w-[1400px]">
-        <h2 className="text-center text-2xl font-bold text-white md:text-3xl">
-          Как начать сотрудничество?
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-sm text-[#a1a1a1]">
-          Оставьте контакты — мы свяжемся с вами и расскажем об условиях вступления
-          и партнёрских форматах.
-        </p>
-        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-stretch">
-          <KrasnodarMapGraphic className="min-h-[280px] w-full lg:min-h-full" />
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-[#121212] p-6 md:p-8"
-          >
-            <label className="block">
-              <span className="mb-2 block text-xs font-medium uppercase tracking-wide text-white/50">
-                Ваше имя
-              </span>
-              <input
-                name="name"
-                required
-                autoComplete="name"
-                className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-3 text-sm text-white outline-none ring-[#e51924]/0 transition placeholder:text-white/30 focus:border-[#e51924]/50 focus:ring-2 focus:ring-[#e51924]/20"
-                placeholder="Иван Иванов"
-              />
-            </label>
-            <label className="block">
-              <span className="mb-2 block text-xs font-medium uppercase tracking-wide text-white/50">
-                Организация
-              </span>
-              <input
-                name="organization"
-                required
-                autoComplete="organization"
-                className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-3 text-sm text-white outline-none focus:border-[#e51924]/50 focus:ring-2 focus:ring-[#e51924]/20"
-                placeholder="ООО «Пример»"
-              />
-            </label>
-            <div className="grid gap-5 sm:grid-cols-2">
-              <label className="block">
-                <span className="mb-2 block text-xs font-medium uppercase tracking-wide text-white/50">
-                  Телефон
-                </span>
-                <input
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-3 text-sm text-white outline-none focus:border-[#e51924]/50 focus:ring-2 focus:ring-[#e51924]/20"
-                  placeholder="+7 (___) ___-__-__"
-                />
-              </label>
-              <label className="block">
-                <span className="mb-2 block text-xs font-medium uppercase tracking-wide text-white/50">
-                  Email
-                </span>
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  className="w-full rounded-xl border border-white/10 bg-black/50 px-4 py-3 text-sm text-white outline-none focus:border-[#e51924]/50 focus:ring-2 focus:ring-[#e51924]/20"
-                  placeholder="you@company.ru"
-                />
-              </label>
+      <div className="mx-auto max-w-[1792px]">
+        <div className="contact-form-panel overflow-hidden rounded-[64px] px-6 py-12 md:px-12 md:py-16 lg:px-16 lg:pb-20 lg:pl-16 lg:pr-12 lg:pt-24 xl:pr-24">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_min(100%,800px)] lg:items-start lg:gap-12 xl:gap-16">
+            {/* Frame 7: заголовки, gap 48px */}
+            <div className="flex max-w-[816px] flex-col gap-12">
+              <h2 className="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[48px] md:leading-[59px]">
+                Остались вопросы?
+              </h2>
+              <p className="text-balance text-lg font-medium leading-7 text-white sm:text-2xl sm:leading-[29px]">
+                Оставьте заявку, и мы свяжемся с вами
+              </p>
             </div>
-            <label className="flex cursor-pointer items-start gap-3 text-sm text-[#a1a1a1]">
-              <input
-                type="checkbox"
-                checked={agreed}
-                onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-1 h-4 w-4 shrink-0 rounded border-white/20 bg-black text-[#e51924] focus:ring-[#e51924]/30"
-              />
-              <span>
-                Согласен с{' '}
-                <a href="#" className="text-white underline-offset-2 hover:underline">
-                  политикой конфиденциальности
-                </a>{' '}
-                и обработкой персональных данных
-              </span>
-            </label>
-            <button
-              type="submit"
-              disabled={!agreed}
-              className="mt-2 w-full rounded-xl bg-[#e51924] py-3.5 text-sm font-semibold text-white transition hover:bg-[#c9151f] disabled:cursor-not-allowed disabled:opacity-40"
+
+            {/* Frame 1321318324: форма, max 800px, gap 32px */}
+            <form
+              onSubmit={handleSubmit}
+              className="flex w-full max-w-[800px] flex-col gap-8 lg:justify-self-end"
             >
-              Отправить
-            </button>
-          </form>
+              <div className="grid gap-8 sm:grid-cols-2">
+                <label className="flex flex-col gap-2">
+                  <span className={labelClass}>Имя *</span>
+                  <input
+                    name="name"
+                    required
+                    autoComplete="name"
+                    className={inputClass}
+                    placeholder="Введите ваше имя"
+                  />
+                </label>
+                <label className="flex flex-col gap-2">
+                  <span className={labelClass}>Email *</span>
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    className={inputClass}
+                    placeholder="you@company.ru"
+                  />
+                </label>
+              </div>
+
+              <div className="grid gap-8 sm:grid-cols-2">
+                <label className="flex flex-col gap-2">
+                  <span className={labelClass}>Телефон</span>
+                  <input
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    className={inputClass}
+                    placeholder="+7 (___) ___-__-__"
+                  />
+                </label>
+                <label className="flex flex-col gap-2">
+                  <span className={labelClass}>Организация *</span>
+                  <input
+                    name="organization"
+                    required
+                    autoComplete="organization"
+                    className={inputClass}
+                    placeholder="ООО «Пример»"
+                  />
+                </label>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <span className={labelClass}>
+                  Категория интересующего направления *
+                </span>
+                <div
+                  className="flex max-h-[220px] flex-wrap content-start gap-3 overflow-x-auto overflow-y-auto [scrollbar-width:thin]"
+                  role="group"
+                  aria-label="Направления"
+                >
+                  {INTEREST_CATEGORIES.map((cat) => {
+                    const on = categories.includes(cat)
+                    return (
+                      <button
+                        key={cat}
+                        type="button"
+                        onClick={() => toggleCategory(cat)}
+                        className={`rounded-[40px] border-2 px-5 py-3 text-center text-base font-semibold leading-[140%] text-white transition ${
+                          on
+                            ? 'border-[#E73446] bg-[#E73446]/15'
+                            : 'border-[#5B5B5B] hover:border-white/40'
+                        }`}
+                      >
+                        {cat}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+
+              <label className="flex flex-col gap-2">
+                <span className={labelClass}>Комментарий</span>
+                <textarea
+                  name="message"
+                  rows={3}
+                  className={`min-h-[48px] resize-y ${inputClass}`}
+                  placeholder="Кратко опишите задачу или вопрос"
+                />
+              </label>
+
+              <div className="flex flex-wrap items-center gap-8">
+                <label className="cursor-pointer">
+                  <span className="text-base font-semibold text-white">
+                    Прикрепить файл
+                  </span>
+                  <input
+                    type="file"
+                    name="attachment"
+                    className="sr-only"
+                    accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+                  />
+                </label>
+                <span className="text-sm leading-[18px] text-white/80">
+                  Не более 30 Мб
+                </span>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <label className="flex cursor-pointer items-start gap-3 text-base leading-5 ">
+                <button
+                  type="submit"
+                  className="flex w-full items-center justify-center rounded-[80px] bg-[#E73446] px-8 py-5 text-xl font-bold leading-[140%] text-white transition hover:bg-[#cf2d3e] disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  Оставить заявку
+                </button>
+                  
+                </label>
+                <span className="text-center text-white">
+                    Заполняя форму, вы даёте{' '}
+                    <a
+                      href="#"
+                      className="underline [font-feature-settings:'tnum'_on,'lnum'_on]"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                      }}
+                    >
+                      согласие на обработку персональных данных
+                    </a>
+                  </span>
+
+                
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>

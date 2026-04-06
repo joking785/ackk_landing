@@ -6,8 +6,8 @@ export function NewsPlaceholder() {
       className="scroll-mt-24 border-t border-white/5 bg-black px-4 py-12 md:px-8"
     >
       <div className="mx-auto max-w-[1400px] text-center">
-        <h2 className="text-xl font-bold text-white md:text-2xl">Новости</h2>
-        <p className="mt-3 text-sm text-[#a1a1a1]">
+        <h2 className="section-heading text-white">Новости</h2>
+        <p className="section-description mt-3 text-[#a1a1a1]">
           Раздел в разработке. Следите за анонсами мероприятий и проектов
           ассоциации.
         </p>

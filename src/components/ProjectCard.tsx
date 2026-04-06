@@ -5,21 +5,22 @@ type ProjectCardProps = {
 
 export function ProjectCard({ title, image }: ProjectCardProps) {
   return (
-    <figure className="group overflow-hidden rounded-2xl border border-white/10 bg-[#121212]">
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <img
-          src={image}
-          alt=""
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-        <figcaption className="absolute inset-x-0 bottom-0 p-4 text-center">
-          <span className="text-sm font-semibold text-white drop-shadow md:text-base">
-            {title}
-          </span>
-        </figcaption>
-      </div>
+    <figure className="group relative isolate flex h-[400px] w-full max-w-[576px] flex-col justify-end overflow-hidden rounded-[40px]">
+      <img
+        src={image}
+        alt={title}
+        className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div
+        className="project-card-image-dim pointer-events-none absolute inset-0"
+        aria-hidden
+      />
+      <figcaption className="relative z-10 w-full shrink-0">
+        <div className="project-card-bottom-bar flex min-h-[141px] w-full flex-col items-center justify-center rounded-[40px] p-12">
+          <span className="member-card-name text-center text-balance">{title}</span>
+        </div>
+      </figcaption>
     </figure>
   )
 }

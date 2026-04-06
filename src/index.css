@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
   --color-surface: #121212;
   --color-surface-elevated: #1a1a1a;
   --color-muted: #a1a1a1;
@@ -24,3 +24,193 @@ body {
 #root {
   min-height: 100vh;
 }
+
+/* Горизонтальный скролл без видимой полосы (прокрутка колёсиком/тач/клавиатурой сохраняется) */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Заголовки секций: Montserrat SemiBold 24 / 100% / 0% (макет) */
+.section-heading {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+/* Подзаголовок / описание секции: Montserrat SemiBold 40 / 140% / 0% (макет) */
+.section-description {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+/* Карточка отрасли (Figma): затемнение фото + нижняя панель */
+.project-card-image-dim {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.project-card-bottom-bar {
+  background:
+    linear-gradient(
+      287.67deg,
+      rgba(102, 102, 102, 0.5) 13.88%,
+      rgba(0, 0, 0, 0.5) 93.57%
+    ),
+    rgba(51, 51, 52, 0.7);
+}
+
+/* Frame 1321318301: панель поверх фона; все углы 40px — вогнутости сверху заполняет картинка под слоем */
+.solution-card-bottom {
+  background:
+    linear-gradient(
+      287.67deg,
+      rgba(0, 0, 0, 0.5) 13.88%,
+      rgba(102, 102, 102, 0.5) 93.57%
+    ),
+    rgba(51, 51, 52, 0.7);
+  box-shadow: 0 -4px 100px rgba(0, 0, 0, 0.1);
+}
+
+/* Карточка участника (Figma 576×702, нижний блок) */
+.member-card-body {
+  background:
+    linear-gradient(
+      287.67deg,
+      rgba(102, 102, 102, 0.3) 13.88%,
+      rgba(0, 0, 0, 0.3) 93.57%
+    ),
+    rgba(51, 51, 52, 0.5);
+  box-shadow: 0 -4px 100px rgba(0, 0, 0, 0.1);
+}
+
+/* Карточки услуг (Services, Figma Frame 16–21) */
+.info-service-card {
+  background:
+    linear-gradient(
+      287.67deg,
+      rgba(0, 0, 0, 0.3) 13.88%,
+      rgba(102, 102, 102, 0.3) 93.57%
+    ),
+    rgba(51, 51, 52, 0.5);
+}
+
+.member-card-name {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 140%;
+  color: #fff;
+}
+
+.member-card-field-label {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #fff;
+}
+
+.member-card-field-text {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Панель формы контактов (Figma Frame 7584): PNG + градиент */
+.contact-form-panel {
+  position: relative;
+  isolation: isolate;
+}
+
+.contact-form-panel::before {
+  content: '';
+  position: absolute;
+  inset: -35%;
+  border-radius: inherit;
+  background-image: url('/contact-form-bg.png');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: min(110%, 1400px);
+  transform: rotate(-105deg);
+  transform-origin: 25% 80%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-form-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    287.67deg,
+    rgba(102, 102, 102, 0.3) 13.88%,
+    rgba(0, 0, 0, 0.3) 93.57%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-form-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero (Frame 8): градиент, блики, декор */
+.hero-panel {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(
+    287.67deg,
+    rgba(102, 102, 102, 0.3) 13.88%,
+    rgba(0, 0, 0, 0.3) 93.57%
+  );
+  border-radius: 64px;
+}
+
+.hero-blur-tr {
+  position: absolute;
+  width: min(1203px, 160vw);
+  height: min(571px, 90vw);
+  right: -12%;
+  top: -40%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0.1;
+  filter: blur(150px);
+  transform: rotate(-30deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-blur-bl {
+  position: absolute;
+  width: min(1172px, 150vw);
+  height: min(835px, 120vw);
+  left: -18%;
+  bottom: -30%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0.2;
+  filter: blur(150px);
+  pointer-events: none;
+  z-index: 0;
+}
+
