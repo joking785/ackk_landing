@@ -9,7 +9,7 @@ export function Footer() {
           {/* Слева: название (437px в макете) */}
           <div className="flex flex-col max-w-[437px] gap-[40px] text-[40px] font-semibold leading-[140%] text-white">
                 <a href="mailto:info@ackk.ru" className="hover:underline">
-                  info@ackk.ru
+                  info@digitalkuban.ru
                 </a>
                 <a href="tel:+78612000000" className="hover:underline">
                   +7 (928) 207-58-25
