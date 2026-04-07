@@ -1,3 +1,4 @@
+import { getIndustryImageSrc } from './industryImages'
 import { getMemberImageSrc } from './memberImages'
 import { getSolutionImageSrc } from './solutionImages'
 
@@ -228,44 +229,19 @@ export const serviceGroups = [
   },
 ] as const
 
-export const projects = [
-  {
-    id: '1',
-    title: 'Сельское хозяйство',
-    image:
-      'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=520&fit=crop&q=80',
-  },
-  {
-    id: '2',
-    title: 'Туризм',
-    image:
-      'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=520&fit=crop&q=80',
-  },
-  {
-    id: '3',
-    title: 'Строительство',
-    image:
-      'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=520&fit=crop&q=80',
-  },
-  {
-    id: '4',
-    title: 'Промышленность',
-    image:
-      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=520&fit=crop&q=80',
-  },
-  {
-    id: '5',
-    title: 'Логистика',
-    image:
-      'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&h=520&fit=crop&q=80',
-  },
-  {
-    id: '6',
-    title: 'Медицина',
-    image:
-      'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=520&fit=crop&q=80',
-  },
+const projectsBase = [
+  { id: '1', title: 'Сельское хозяйство' },
+  { id: '2', title: 'Туризм' },
+  { id: '3', title: 'Строительство' },
+  { id: '4', title: 'Промышленность' },
+  { id: '5', title: 'Логистика' },
+  { id: '6', title: 'Медицина' },
 ] as const
+
+export const projects = projectsBase.map((item) => ({
+  ...item,
+  image: getIndustryImageSrc(item.id) ?? '',
+}))
 
 /** Участники (макет Figma Frame 26; логотипы — `assets/members/{id}.png`) */
 const membersBase = [
