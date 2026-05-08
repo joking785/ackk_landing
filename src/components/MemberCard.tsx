@@ -25,19 +25,19 @@ export function MemberCard({
         ) : null}
       </div>
 
-      <div className="member-card-body flex min-h-0 flex-col gap-8 overflow-y-auto rounded-[40px] p-12">
+      <div className="member-card-body flex min-h-0 flex-col gap-8 rounded-[40px] p-12">
         <p className="member-card-name shrink-0 text-pretty">{name}</p>
 
         <div className="flex min-h-0 flex-col gap-3">
           <p className="member-card-field-label shrink-0">Специализация</p>
-          <p className="member-card-field-text text-pretty">{specialization}</p>
+          <p className="member-card-field-text text-pretty overflow-y-auto">{specialization}</p>
         </div>
 
         <div className="flex min-h-0 flex-col gap-3">
           <p className="member-card-field-label shrink-0">
             Ключевая экспертиза
           </p>
-          <p className="member-card-field-text text-pretty">{description}</p>
+          <p className="member-card-field-text text-pretty overflow-y-auto">{description}</p>
         </div>
       </div>
     </article>
